@@ -7,10 +7,15 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laratrust\Contracts\LaratrustUser;
+use Laratrust\Traits\HasRolesAndPermissions;
 
-class User extends Authenticatable
+
+
+class User extends Authenticatable implements LaratrustUser
 {
-    
+    use  HasRolesAndPermissions;
+    //More Code
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
