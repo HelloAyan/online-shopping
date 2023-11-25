@@ -2,7 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +41,30 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::controller(DashboardController::class)->group(function (){
         Route::get('admin/dashboard', 'index');
-    });  
+    }); 
+
+    Route::controller(CategoryController::class)->group(function (){
+        Route::get('admin/all-category', 'index')->name('allCategory');
+        Route::get('admin/add-category', 'AddCategory')->name('addCategory');
+    });
+    
+    Route::controller(SubCategoryController::class)->group(function (){
+        Route::get('admin/all-subcategory', 'index')->name('allSubCategory');
+        Route::get('admin/add-subcategory', 'AddSubCategory')->name('addSubCategory');
+    });
+
+    Route::controller(ProductController::class)->group(function (){
+        Route::get('admin/all-product', 'index')->name('allProduct');
+        Route::get('admin/add-product', 'AddProduct')->name('addProduct');
+    });
+
+    Route::controller(OrderController::class)->group(function (){
+        Route::get('admin/pending-order', 'index')->name('pendingOrder');
+        
+    });
 });
+
+
 
 
 
