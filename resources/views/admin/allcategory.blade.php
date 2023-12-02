@@ -37,7 +37,7 @@ All Category - Online Shop
                         <td>10</td>
                         <td>100</td>
                         <td>
-                            <a href="" class="btn btn-primary">Edit</a>
+                            <a href="{{route('editCategory', $category->id)}}" class="btn btn-primary">Edit</a>
                             <a href="" class="btn btn-warning">Delete</a>
                         </td>
 
