@@ -34,11 +34,11 @@ All Category - Online Shop
                     <tr>
                         <td>{{$counter}}</td>
                         <td>{{$category->category_name}} </td>
-                        <td>10</td>
+                        <td>{{$category->slug}}</td>
                         <td>100</td>
                         <td>
                             <a href="{{route('editCategory', $category->id)}}" class="btn btn-primary">Edit</a>
-                            <a href="" class="btn btn-warning">Delete</a>
+                            <a href="{{route('deleteCategory', $category->id)}}" class="btn btn-warning">Delete</a>
                         </td>
 
                     </tr>

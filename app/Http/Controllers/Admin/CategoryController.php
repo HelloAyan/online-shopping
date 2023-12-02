@@ -25,7 +25,7 @@ class CategoryController extends Controller
 
         Category::insert([
             'category_name' => $request->category_name,
-            'slug' => strtolower(str_replace('','-', $request->category_name)),
+            'slug' => strtolower(str_replace(' ', '-', $request->category_name)),
         ]);
 
         return redirect()->route('allCategory')->with('message', 'Category Added Successfully');
@@ -36,7 +36,23 @@ class CategoryController extends Controller
         return view('admin.editCategory', compact('category_info'));
     }
 
-    public function updateCategory(){
+    public function updateCategory(Request $request){
+
+        $category_id = $request->category_id;
+         $request->validate([
+            'category_name' => 'required|unique:categories'
+        ]);
         
+        Category::findOrFail($category_id)->update([
+            'category_name' => $request->category_name,
+            'slug' => strtolower(str_replace('','-', $request->category_name)),
+        ]);
+        return redirect()->route('allCategory')->with('message', 'Category Updated Successfully');
+
+    }
+
+    public function deleteCategory($id){
+        Category::findOrFail($id)->delete();
+        return redirect()->route('allCategory')->with('message', 'Category Deleted Successfully');
     }
 }
