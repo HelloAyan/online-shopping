@@ -9,6 +9,12 @@ All Category - Online Shop
     <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Page /</span> All Category</h4>
     <div class="card">
         <h5 class="card-header">Available Category</h5>
+        @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{session()->get('message')}}
+        </div>
+
+        @endif
         <div class="table-responsive text-nowrap">
             <table class="table">
                 <thead class="table-light">
@@ -21,9 +27,13 @@ All Category - Online Shop
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
+                    @php
+                    $counter = 1;
+                    @endphp
+                    @foreach($categories as $category)
                     <tr>
-                        <td>1</td>
-                        <td>Electronics </td>
+                        <td>{{$counter}}</td>
+                        <td>{{$category->category_name}} </td>
                         <td>10</td>
                         <td>100</td>
                         <td>
@@ -32,6 +42,10 @@ All Category - Online Shop
                         </td>
 
                     </tr>
+                    @php
+                    $counter++; // Increment the counter for the next row
+                    @endphp
+                    @endforeach
                 </tbody>
             </table>
         </div>
