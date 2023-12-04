@@ -56,6 +56,9 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::get('admin/all-subcategory', 'index')->name('allSubCategory');
         Route::get('admin/add-subcategory', 'AddSubCategory')->name('addSubCategory');
         Route::post('admin/store-subcategory', 'storeSubCategory')->name('storeSubCategory');
+        Route::get('admin/edit-subcategory/{id}', 'editSubCategory')->name('editSubCategory');
+        Route::put('admin/update-subcategory/', 'updateSubCategory')->name('updateSubCategory');
+        Route::delete('admin/delete-subcategory/{id}', 'deleteSubCategory')->name('deleteSubCategory');
     });
 
     Route::controller(ProductController::class)->group(function (){
