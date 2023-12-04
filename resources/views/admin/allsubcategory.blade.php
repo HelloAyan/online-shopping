@@ -23,6 +23,7 @@
                             <th>Category</th>
                             <th>Product</th>
                             <th>Actions</th>
+
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
@@ -35,12 +36,17 @@
                                 <td>{{ $subcategory->subcategory_name }} </td>
                                 <td>{{ $subcategory->category_name }}</td>
                                 <td>{{ $subcategory->product_count }}</td>
-                                <td>
+                                <td style= "display: flex; column-gap: 5px;">
                                     <a href="{{ route('editSubCategory', $subcategory->id) }}"
                                         class="btn btn-primary">Edit</a>
-                                    <a href="{{ route('deleteSubCategory', $subcategory->id) }}"
-                                        class="btn btn-warning">Delete</a>
+                                    <form method="post" action="{{ route('deleteSubCategory', $subcategory->id) }}"
+                                        onsubmit="return confirm('Are you sure you want to delete this product?');">
+                                        @csrf
+                                        @method('delete')
+                                        <input class="btn btn-warning" type="submit" value="Delete">
+                                    </form>
                                 </td>
+
                             </tr>
                             @php
                                 $counter++; // Increment the counter for the next row
