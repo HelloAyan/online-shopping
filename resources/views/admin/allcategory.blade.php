@@ -34,7 +34,7 @@
                                 <td>{{ $counter }}</td>
                                 <td>{{ $category->category_name }} </td>
                                 <td>{{ $category->subcategory_count }}</td>
-                                <td>100</td>
+                                <td>{{ $category->product_count }}</td>
                                 <td>
                                     <a href="{{ route('editCategory', $category->id) }}" class="btn btn-primary">Edit</a>
                                     <a href="{{ route('deleteCategory', $category->id) }}"
