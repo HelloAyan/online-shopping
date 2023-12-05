@@ -75,12 +75,12 @@ class ProductController extends Controller
 
     public function updateProduct(Request $request){
         $request->validate([
-            'product_name' => 'required|unique:products',
+            'product_name' => 'required',
             'price' => 'required',
             'quantity' => 'required',
             'product_short_description' => 'required',
             'product_long_description' => 'required',
-            'img' => 'required|image|mimes:jpeg,jpg,png,gif|max:5000',
+            'img' => 'required |image|mimes:jpeg,jpg,png,gif|max:5000',
         ]);
 
         $product_id = $request->product_id;
@@ -104,7 +104,12 @@ class ProductController extends Controller
     }
 
     public function deleteProduct($id){
+        $product_cat = product::where('id', $id)->value('product_category_id');
+        $sub_cat = product::where('id', $id)->value('product_subcategory_id');
         product::findOrFail($id)->delete();
+
+        Category::where('id', $product_cat)->decrement('product_count', 1);
+        Subcategory::where('id', $sub_cat)->decrement('product_count', 1);
         return redirect()->route('allProduct')->with('message', 'Product Deleted Successfully');
     }
 }

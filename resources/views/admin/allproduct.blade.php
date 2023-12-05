@@ -37,7 +37,7 @@
                                 <td><img style="width: 50px;" src={{ asset($product->img) }} alt=""></td>
                                 <td>{{ $product->price }}</td>
                                 <td>{{ $product->quantity }}</td>
-                                <td style= "display: flex; column-gap: 5px;">
+                                <td style= "display: flex; column-gap: 5px; padding-bottom:21px;">
                                     <a href="{{ route('editProduct', $product->id) }}" class="btn btn-primary">Edit</a>
                                     <form method="post" action="{{ route('deleteProduct', $product->id) }}"
                                         onsubmit="return confirm('Are you sure you want to delete this Product?');">
