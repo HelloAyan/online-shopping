@@ -40,7 +40,7 @@
                                     <a href="{{ route('editSubCategory', $subcategory->id) }}"
                                         class="btn btn-primary">Edit</a>
                                     <form method="post" action="{{ route('deleteSubCategory', $subcategory->id) }}"
-                                        onsubmit="return confirm('Are you sure you want to delete this product?');">
+                                        onsubmit="return confirm('Are you sure you want to delete this Sub Category?');">
                                         @csrf
                                         @method('delete')
                                         <input class="btn btn-warning" type="submit" value="Delete">

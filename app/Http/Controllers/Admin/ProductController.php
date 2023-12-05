@@ -102,4 +102,9 @@ class ProductController extends Controller
 
         return redirect()->route('allProduct')->with('message', 'Product Updated Successfully');
     }
+
+    public function deleteProduct($id){
+        product::findOrFail($id)->delete();
+        return redirect()->route('allProduct')->with('message', 'Product Deleted Successfully');
+    }
 }
