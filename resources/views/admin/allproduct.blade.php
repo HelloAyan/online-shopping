@@ -22,21 +22,30 @@
                             <th>Product Name</th>
                             <th>Image</th>
                             <th>Price</th>
+                            <th>Quantity</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                        <tr>
-                            <td>1</td>
-                            <td>Electronics </td>
-                            <td>Img</td>
-                            <td>100</td>
-                            <td>
-                                <a href="" class="btn btn-primary">Edit</a>
-                                <a href="" class="btn btn-warning">Delete</a>
-                            </td>
-
-                        </tr>
+                        @php
+                            $counter = 1;
+                        @endphp
+                        @foreach ($products as $product)
+                            <tr>
+                                <td>{{ $counter }}</td>
+                                <td>{{ $product->product_name }} </td>
+                                <td><img style="width: 50px;" src={{ asset($product->img) }} alt=""></td>
+                                <td>{{ $product->price }}</td>
+                                <td>{{ $product->quantity }}</td>
+                                <td>
+                                    <a href="{{ route('editProduct', $product->id) }}" class="btn btn-primary">Edit</a>
+                                    <a href="" class="btn btn-warning">Delete</a>
+                                </td>
+                            </tr>
+                            @php
+                                $counter++; // Increment the counter for the next row
+                            @endphp
+                        @endforeach
                     </tbody>
                 </table>
             </div>

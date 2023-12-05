@@ -40,7 +40,6 @@
                                     <a href="{{ route('deleteCategory', $category->id) }}"
                                         class="btn btn-warning">Delete</a>
                                 </td>
-
                             </tr>
                             @php
                                 $counter++; // Increment the counter for the next row
