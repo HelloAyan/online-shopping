@@ -20,7 +20,7 @@ use App\Http\Controllers\Admin\SubCategoryController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.layouts.template');
 });
 
 Route::get('/dashboard', function () {
