@@ -1,3 +1,7 @@
+@php
+    $categories = App\Models\Category::latest()->get();
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,7 +56,7 @@
                         <div class="custom_menu">
                             <ul>
                                 <li><a href="#">Best Sellers</a></li>
-                                <li><a href="{{ route('category') }}">Gift Ideas</a></li>
+                                <li><a href="">Gift Ideas</a></li>
                                 <li><a href="{{ route('newRelease') }}">New Releases</a></li>
                                 <li><a href="{{ route('todaysDeal') }}">Today's Deals</a></li>
                                 <li><a href="{{ route('customerService') }}">Customer Service</a></li>
@@ -68,7 +72,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="logo"><a href="index.html"><img src="{{ asset('home/images/logo.png') }}"></a>
+                        <div class="logo"><a href="{{ route('Home') }}"><img
+                                    src="{{ asset('home/images/logo.png') }}"></a>
                         </div>
                     </div>
                 </div>
@@ -82,9 +87,10 @@
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <a href="index.html">Home</a>
-                        <a href="fashion.html">Fashion</a>
-                        <a href="electronic.html">Electronic</a>
-                        <a href="jewellery.html">Jewellery</a>
+                        @foreach ($categories as $category)
+                            <a
+                                href="{{ route('category', [$category->id, $category->slug]) }}">{{ $category->category_name }}</a>
+                        @endforeach
                     </div>
                     <span class="toggle_icon" onclick="openNav()"><img
                             src="{{ asset('home/images/toggle-icon.png') }}"></span>
@@ -93,9 +99,11 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Category
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            @foreach ($categories as $category)
+                                <a class="dropdown-item"
+                                    href="{{ route('category', [$category->id, $category->slug]) }}">{{ $category->category_name }}</a>
+                            @endforeach
+
                         </div>
                     </div>
                     <div class="main">
@@ -185,8 +193,8 @@
         <!-- banner section end -->
     </div>
     <!-- banner bg main end -->
-    <div class="container py-5">
-        @yield('main-container');
+    <div class="container py-5" style="margin-top: 200px;">
+        @yield('main-container')
     </div>
     <!-- footer section start -->
     <div class="footer_section layout_padding">
