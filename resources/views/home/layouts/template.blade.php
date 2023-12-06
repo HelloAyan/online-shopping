@@ -86,7 +86,7 @@
                 <div class="containt_main">
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a href="index.html">Home</a>
+                        <a href="{{ route('Home') }}">Home</a>
                         @foreach ($categories as $category)
                             <a
                                 href="{{ route('category', [$category->id, $category->slug]) }}">{{ $category->category_name }}</a>
