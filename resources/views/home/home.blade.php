@@ -21,7 +21,15 @@
                                     <div class="tshirt_img"><img src="{{ asset($product->img) }}">
                                     </div>
                                     <div class="btn_main">
-                                        <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                        <div class="buy_bt">
+                                            <form action="{{ route('addProductToCart') }}" method="post">
+                                                @csrf
+                                                <input type="hidden" value="{{ $product->id }}" name="product_id">
+                                                <input type="hidden" value="{{ $product->price }}" name="price">
+                                                <input type="hidden" value="1" name="quantity">
+                                                <input class="btn btn-primary" type="submit" value="Add To Cart">
+                                            </form>
+                                        </div>
                                         <div class="seemore_bt"><a
                                                 href="{{ route('productDetails', [$product->id, $product->slug]) }}">See
                                                 More</a></div>
@@ -123,7 +131,8 @@
                                         <h4 class="shirt_text">Computers</h4>
                                         <p class="price_text">Start Price <span style="color: #262626;">$ 100</span>
                                         </p>
-                                        <div class="electronic_img"><img src="{{ asset('home/images/computer-img.png') }}">
+                                        <div class="electronic_img"><img
+                                                src="{{ asset('home/images/computer-img.png') }}">
                                         </div>
                                         <div class="btn_main">
                                             <div class="buy_bt"><a href="#">Buy Now</a></div>

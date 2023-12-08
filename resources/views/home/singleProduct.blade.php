@@ -31,7 +31,20 @@
 
                     </div>
                     <div class="btn_main">
-                        <div class="btn btn-warning"> <a href="#"> Add To Cart</a> </div>
+                        <form action="{{ route('addProductToCart') }}" method="post">
+                            @csrf
+                            <input type="hidden" value="{{ $product->id }}" name="product_id">
+                            <input type="hidden" value="{{ $product->price }}" name="price">
+                            <input type="hidden" value="1" name="quantity">
+                            <div class="form-group">
+                                <label class="pr-2" for="product_quantity">How Many Pics?</label>
+                                <input class="form-control" style="width: 100px;" type="number" min="1"
+                                    name="product_quantity" placeholder="1">
+                            </div>
+
+                            <br>
+                            <input class="btn btn-warning" type="submit" value="Add To Cart">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -52,7 +65,15 @@
                                         <div class="tshirt_img"><img src="{{ asset($product->img) }}">
                                         </div>
                                         <div class="btn_main">
-                                            <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                            <div class="buy_bt">
+                                                <form action="{{ route('addProductToCart') }}" method="post">
+                                                    @csrf
+                                                    <input type="hidden" value="{{ $product->id }}" name="product_id">
+                                                    <input type="hidden" value="{{ $product->price }}" name="price">
+                                                    <input type="hidden" value="1" name="quantity">
+                                                    <input class="btn btn-primary" type="submit" value="Add To Cart">
+                                                </form>
+                                            </div>
                                             <div class="seemore_bt"><a
                                                     href="{{ route('productDetails', [$product->id, $product->slug]) }}">See
                                                     More</a></div>

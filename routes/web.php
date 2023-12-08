@@ -26,16 +26,22 @@ Route::controller(HomeController::class)->group(function(){
     Route::get('/', 'Index')->name('Home');
 });
 
+
 Route::controller(ClientController::class)->group(function(){
     Route::get('/category/{id}/{slug}', 'category')->name('category');
     Route::get('/product-details/{id}/{slug}', 'productDetails')->name('productDetails');
     Route::get('/add-to-cart', 'addToCart')->name('addToCart');
+    Route::post('/add-product-to-cart', 'addProductToCart')->name('addProductToCart');
     Route::get('/checkout', 'checkout')->name('checkout');
     Route::get('/user-profile', 'userProfile')->name('userProfile');
+    Route::get('/user-profile/pending-order', 'pendingOrder')->name('pendingOrders');
+    Route::get('/user-profile/history', 'history')->name('history');
     Route::get('/new-release', 'newRelease')->name('newRelease');
     Route::get('/todays-deal', 'todaysDeal')->name('todaysDeal');
     Route::get('/customer-service', 'customerService')->name('customerService');
 });
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -86,7 +92,6 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
 
     Route::controller(OrderController::class)->group(function (){
         Route::get('admin/pending-order', 'index')->name('pendingOrder');
-        
     });
 });
 

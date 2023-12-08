@@ -45,4 +45,16 @@ class ClientController extends Controller
     public function customerService(){
         return view('home.customerService');
     }
+
+    public function pendingOrder(){
+ return view('home.pendingOrder');
+    }
+
+    public function history(){
+        return view('home.history');
+    }
+
+    public function addProductToCart(){
+        
+    }
 }

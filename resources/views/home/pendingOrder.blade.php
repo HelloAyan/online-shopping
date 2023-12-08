@@ -1,5 +1,5 @@
 @extends('home.userProfileTemplate')
 
 @section('profile-content')
-    hi
+    Pending order
 @endsection
