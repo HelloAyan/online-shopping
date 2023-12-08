@@ -39,7 +39,7 @@
                             <div class="form-group">
                                 <label class="pr-2" for="product_quantity">How Many Pics?</label>
                                 <input class="form-control" style="width: 100px;" type="number" min="1"
-                                    name="product_quantity" placeholder="1">
+                                    name="quantity" placeholder="1">
                             </div>
 
                             <br>
