@@ -28,27 +28,36 @@
 
                         @php
                             $counter = 1;
+                            $total = 0;
                         @endphp
+
                         @foreach ($cart_items as $cart_item)
                             @php
                                 $product_name = App\Models\product::where('id', $cart_item->product_id)->value('product_name');
                                 $product_image = App\Models\product::where('id', $cart_item->product_id)->value('img');
                             @endphp
                             <tr>
-                                <th>{{ $counter }}</th>
-                                <th>{{ $product_name }}</th>
-                                <th><img style="width: 50px;" src="{{ asset($product_image) }}"></th>
-                                <th>{{ $cart_item->quantity }}</th>
-                                <th>{{ $cart_item->price }}</th>
-                                <th><a href="" class="btn btn-warning"> Remove</a></th>
+                                <td class="align-middle">{{ $counter }}</td>
+                                <td class="align-middle">{{ $product_name }}</td>
+                                <td class="align-middle"><img style="width: 50px;" src="{{ asset($product_image) }}"></td>
+                                <td class="align-middle">{{ $cart_item->quantity }}</td>
+                                <td class="align-middle">{{ $cart_item->price }}</td>
+                                <td class="align-middle"><a href="" class="btn btn-warning"> Remove</a></td>
                             </tr>
                             @php
-                                $counter++; // Increment the counter for the next row
+                                $counter++;
+                                $total = $total + $cart_item->price;
                             @endphp
                         @endforeach
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th class="align-middle">Total Price</th>
+                        <th class="align-middle">{{ $total }}</th>
+                        <th></th>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-@endsection
+@endsection;

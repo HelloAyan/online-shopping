@@ -68,5 +68,19 @@ class ClientController extends Controller
         ]);
 
         return redirect()->route('addToCart')->with('message', 'Your Item Added to Cart Successfully...');
+
+        // $product_price = $request->price;
+        // $product_quantity = $request->quantity;
+        // $price = $product_price * $product_quantity;
+
+        // $cart = session()->get('cart');
+        // $cart[$request->product_id] = [
+        //     'product_id' => $request->product_id,
+        //     'quantity' => $request->quantity,
+        //     'price' => $price,
+        // ];
+        // session()->put('cart', $cart);
+
+        // return redirect()->route('addToCart')->with('message', 'Your Item Added to Cart Successfully...');
     }
 }
