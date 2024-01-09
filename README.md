@@ -1,2 +1,2 @@
-## Live URL: <a href="/shop.helloayan.site"> shop.helloayan.site</a>
-## Admin URL: shop.helloayan.site/admin/dashboard
+[Live URL: shop.helloayan.site](https://shop.helloayan.site)
+[Admin URL: shop.helloayan.site/admin/dashboard](https://shop.helloayan.site/admin/dashboard)
